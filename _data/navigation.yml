@@ -21,7 +21,8 @@ main:
   #   url: /year-archive/
 
   - title: "CV"
-    url: /cv/
+    url: /files/cv-latest.pdf
+    external: true
 
   # - title: "CV"
   #   url: /cv-json/
