@@ -8,5 +8,29 @@ author_profile: true
 {% include base_path %}
 
 {% for post in site.teaching reversed %}
-  {% include archive-single.html %}
+  <div class="teaching-item">
+    <!-- Course title with link -->
+    {% if post.external_url %}
+      <h2><a href="{{ post.external_url }}" target="_blank">{{ post.title }}</a></h2>
+    {% else %}
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    {% endif %}
+
+    <!-- Term / Date and venue on one line -->
+    {% if post.term or post.date or post.venue %}
+      <p>
+        {% if post.term %}
+          {{ post.term }}
+        {% elsif post.date %}
+          {{ post.date | date: "%B %Y" }}
+        {% endif %}
+        {% if (post.term or post.date) and post.venue %}
+          –
+        {% endif %}
+        {% if post.venue %}
+          {{ post.venue }}
+        {% endif %}
+      </p>
+    {% endif %}
+  </div>
 {% endfor %}
